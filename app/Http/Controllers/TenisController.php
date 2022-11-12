@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Services\Personas;
+use App\Services\Persona;
 
 class TenisController extends Controller
 {
@@ -10,18 +10,18 @@ class TenisController extends Controller
         $this->rondaEliminatoria($encuentros);
     }
 
+    public function generarEncuentros($jugadores){
+        shuffle($jugadores);
+        $encuentros = array_chunk($jugadores,2);
+        return $encuentros;
+    }
+
     public function rondaEliminatoria($encuentros){
         foreach($encuentros as $encuentro){
             $jugador1 = $encuentro[0];
             $jugador2 = $encuentro[1];
             $this->competir($jugador1,$jugador2);
         }
-    }
-
-    public function generarEncuentros($jugadores){
-        shuffle($jugadores);
-        $encuentros = array_chunk($jugadores,2);
-        return $encuentros;
     }
 
     public function competir($jugador1, $jugador2){
