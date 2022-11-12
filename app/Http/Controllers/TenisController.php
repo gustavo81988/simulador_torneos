@@ -17,12 +17,9 @@ class TenisController extends Controller
 
     public function generarEncuentros($jugadores){
         shuffle($jugadores);
-        dd($jugadores);
         foreach($jugadores as $jugador){
             dd($jugador);
         }
-        dd($jugadores);
-        dd(count($jugadores));
     }
 
     public function obtenerHabilidades($total){
