@@ -7,7 +7,6 @@ class TenisController extends Controller
 {
     public function index(Request $request){
         $jugadores  = $this->jugadores($request);
-        dd($jugadores);
         $encuentros = $this->generarEncuentros($jugadores);
         $this->rondaEliminatoria($encuentros);
     }
