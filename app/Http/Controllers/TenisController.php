@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 class TenisController extends Controller
 {
     public function index(Request $request){
-        return $this->generarEncuentros($request->all());
+        $encuentros = $this->generarEncuentros($request->all());
+        $this->rondaEliminatoria($encuentros);
     }
 
     public function rondaEliminatoria($encuentros){
-
+        
     }
 
     public function generarEncuentros($jugadores){
