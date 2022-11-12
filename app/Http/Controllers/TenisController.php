@@ -7,15 +7,10 @@ use Illuminate\Http\Request;
 class TenisController extends Controller
 {
     public function index(Request $request){
-        $total_request = count($request->all());
-        if( ($total_request % 2) == 0 ) {
-            return $this->generarEncuentros($request->all());
-        }else{
-            echo 'Error: La cantidad de jugadores debe ser par';
-        }
+        return $this->generarEncuentros($request->all());
     }
 
-    public function jugador(){
+    public function rondaEliminatoria($encuentros){
 
     }
 
@@ -34,10 +29,4 @@ class TenisController extends Controller
     public function obtenerGanador($jugador1,$jugador2){
 
     }
-
-    // public function index(Request $request){
-    //     $jugador1 = $this->obtenerHabilidades(290); 
-    //     $jugador2 = $this->obtenerHabilidades(30);
-    //     return rand(1,20);
-    // }
 }
