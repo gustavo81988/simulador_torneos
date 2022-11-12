@@ -9,7 +9,7 @@ class TenisController extends Controller
     public function index(Request $request){
         $total_request = count($request->all());
         if( ($total_request % 2) == 0 ) {
-            echo 'Continuar';
+            $this->generarEncuentros($request->all());
         }else{
             echo 'Error: La cantidad de jugadores debe ser par';
         }
