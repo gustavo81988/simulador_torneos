@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 class TenisController extends Controller
 {
     public function index(Request $request){
-        dd(count($request->all()));
+        $total_request = count($request->all());
+        if ( ($total_request % 2) == 0 ) {
+            echo 'Continuar';
+        }else{
+            echo 'Error: La cantidad de jugadores debe ser par';
+        }
     }
 
     public function generarEncuentros($jugadores){
