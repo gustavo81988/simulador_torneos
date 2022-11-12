@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('formularios','DocumentoDigitalFormularioController@limpiarRespuestas')
-    ->name('api.jugador')
+Route::post('tenis','TenisController@index')
+    ->name('api.tenis.index')
 ;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
