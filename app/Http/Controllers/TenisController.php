@@ -16,6 +16,7 @@ class TenisController extends Controller
     }
 
     public function generarEncuentros($jugadores){
+        dd($jugadores);
         dd(count($jugadores));
     }
 
