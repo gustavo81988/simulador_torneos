@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class TenisController extends Controller
 {
     public function index(Request $request){
-        dd($request->all());
+        dd(count($request->all()));
     }
 
     public function generarEncuentros($jugadores){
