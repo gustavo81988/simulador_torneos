@@ -9,18 +9,20 @@ class TenisController extends Controller
     public function index(Request $request){
         $total_request = count($request->all());
         if( ($total_request % 2) == 0 ) {
-            $this->generarEncuentros($request->all());
+            return $this->generarEncuentros($request->all());
         }else{
             echo 'Error: La cantidad de jugadores debe ser par';
         }
     }
 
+    public function jugador(){
+
+    }
+
     public function generarEncuentros($jugadores){
-        $encuentros = [];
         shuffle($jugadores);
-        foreach($jugadores as $jugador){
-            dd($jugador);
-        }
+        $encuentros = array_chunk($jugadores,2);
+        return $encuentros;
     }
 
     public function obtenerHabilidades($total){
