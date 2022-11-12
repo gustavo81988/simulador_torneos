@@ -6,8 +6,24 @@ use App\Services\Persona;
 class TenisController extends Controller
 {
     public function index(Request $request){
-        $encuentros = $this->generarEncuentros($request->all());
+        $jugadores  = $this->jugadores($request);
+        dd($jugadores);
+        $encuentros = $this->generarEncuentros($jugadores);
         $this->rondaEliminatoria($encuentros);
+    }
+
+    public function jugadores(Request $request){
+        $jugadores = [];
+        foreach($request->all() as $jugador){
+            $jugadores[] = new Persona(
+                $jugador['primer_nombre'],
+                $jugador['segundo_nombre'],
+                $jugador['habilidad'],
+                $jugador['fuerza'],
+                $jugador['velocidad']
+            );
+        }
+        return $jugadores;
     }
 
     public function generarEncuentros($jugadores){

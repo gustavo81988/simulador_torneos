@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Persona;
+namespace App\Services;
 
 class Persona
 {
