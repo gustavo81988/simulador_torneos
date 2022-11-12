@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 class TenisController extends Controller
 {
     public function index(Request $request){
-        $jugador1 = $this->obtenerHabilidades(290); 
-        $jugador2 = $this->obtenerHabilidades(30);
-        return rand(1,20);
+        dd($request->all());
     }
 
     public function generarEncuentros($jugadores){
