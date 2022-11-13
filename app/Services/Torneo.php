@@ -8,7 +8,7 @@ class Torneo
 
     public function __construct($jugadores){
         $this->jugadores = $jugadores;
-        dd($this->generarEncuentros());
+        $encuentros = $this->generarEncuentros();
     }
 
     public function generarEncuentros(){
