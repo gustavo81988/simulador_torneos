@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Torneo;
 use App\Services\Partido;
+use App\Services\JugadorMasculino;
 
 class TenisController extends Controller
 {

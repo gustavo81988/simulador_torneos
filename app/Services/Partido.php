@@ -11,5 +11,9 @@ class Partido
         $this->$jugador2 = $jugador2;
     }
 
+    public function obtenerEstadisticas(){
+        
+    }
+
 
 }
