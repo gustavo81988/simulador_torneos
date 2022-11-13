@@ -2,7 +2,7 @@
 namespace App\Services;
 use App\Services\Jugador;
 
-class Mujer implements Jugador
+class JugadorFemenino implements Jugador
 {
     public $primerNombre ;
     public $segundoNombre;
@@ -19,11 +19,11 @@ class Mujer implements Jugador
         $this->tiempo_reaccion = $tiempo_reaccion;
     }
 
-    public function nombreCompleto(){
+    public function nombreCompleto():string{
         return "{$this->primerNombre} {$this->segundoNombre}";
     }
 
-    public function obtenerHabilidades(){
+    public function obtenerHabilidades():array{
         return [
             $this->habilidad,
             $this->tiempo_reaccion
