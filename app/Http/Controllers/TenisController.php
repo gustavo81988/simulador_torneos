@@ -41,7 +41,7 @@ class TenisController extends Controller
     }
 
     public function competir($jugador1, $jugador2){
-        $fuerza = $this->rolearStat();
+        dd('ok');
     }
 
     public function rollStat(Persona $jugador){
