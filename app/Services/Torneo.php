@@ -4,18 +4,16 @@ namespace App\Services;
 class Torneo
 {
     public $jugadores;
-    public $partido;
 
-    public function __construct($jugadores,$partido){
+    public function __construct($jugadores){
         $this->jugadores = $jugadores;
-        $this->partido   = $partido;
         dd($this->generarEncuentros());
     }
 
     public function generarEncuentros(){
         $jugadores = $this->jugadores;
         shuffle($jugadores);
-        $encuentros = array_chunk(jugadores,2);
+        $encuentros = array_chunk($jugadores,2);
         return $encuentros;
     }
 

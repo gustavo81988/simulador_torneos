@@ -9,7 +9,7 @@ class TenisController extends Controller
 {
     public function index(Request $request){
         $jugadores = $this->listarJugadores($request);
-        $resultado = new Torneo($jugadores,$partido);
+        $resultado = new Torneo($jugadores);
         return $resultado;
     }
 
