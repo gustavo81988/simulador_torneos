@@ -26,12 +26,6 @@ class TenisController extends Controller
         return $jugadores;
     }
 
-    public function generarEncuentros($jugadores){
-        shuffle($jugadores);
-        $encuentros = array_chunk($jugadores,2);
-        return $encuentros;
-    }
-
     public function rondaEliminatoria($encuentros){
         foreach($encuentros as $encuentro){
             $jugador1 = $encuentro[0];
@@ -41,7 +35,7 @@ class TenisController extends Controller
     }
 
     public function competir($jugador1, $jugador2){
-        dd('ok');
+        dd($jugador1);
     }
 
     public function rollStat(Persona $jugador){
