@@ -1,7 +1,8 @@
 <?php
 namespace App\Services;
+use App\Services\Jugador;
 
-class Mujer extends Persona
+class Mujer implements Jugador
 {
     public $primerNombre ;
     public $segundoNombre;

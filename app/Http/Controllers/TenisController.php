@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Services\Persona;
 
 class TenisController extends Controller
 {
@@ -43,7 +42,7 @@ class TenisController extends Controller
         $fuerza = $this->rolearStat();
     }
 
-    public function rolearStat(Persona $jugador){
+    public function rollStat(Persona $jugador){
 
     }
 

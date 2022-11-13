@@ -1,7 +1,8 @@
 <?php
 namespace App\Services;
+use App\Services\Jugador;
 
-class Hombre extends Persona
+class Hombre implements Jugador
 {
     public $primerNombre ;
     public $segundoNombre;
@@ -24,7 +25,7 @@ class Hombre extends Persona
         return "{$this->primerNombre} {$this->segundoNombre}";
     }
 
-    public function obtenerHabilidades(){
+    public function estadisticas(){
         return [
             $this->habilidad,
             $this->fuerza,
