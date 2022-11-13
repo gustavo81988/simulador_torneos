@@ -30,9 +30,4 @@ class Torneo
             return $ganadores;
         }
     }
-
-    public function competir($jugador1,$jugador2){
-        $ganador = $jugador1;
-        return $ganador;
-    }
 }

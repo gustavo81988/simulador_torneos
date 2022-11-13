@@ -11,6 +11,11 @@ class Partido
         $this->$jugador2 = $jugador2;
     }
 
+    public function competir($jugador1,$jugador2){
+        $ganador = $jugador1;
+        return $ganador;
+    }
+
     public function obtenerEstadisticas(){
 
     }
