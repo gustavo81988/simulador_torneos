@@ -1,6 +1,6 @@
 <?php
 namespace App\Services;
-use App\Services\Jugador;
+use App\Services\Interfaces\Jugador;
 
 class JugadorMasculino implements Jugador
 {
