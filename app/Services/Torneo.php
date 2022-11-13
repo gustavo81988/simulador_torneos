@@ -20,4 +20,8 @@ class Torneo
             $this->competir($jugador1,$jugador2);
         }
     }
+
+    public function competir($jugador1,$jugador2){
+        
+    }
 }
