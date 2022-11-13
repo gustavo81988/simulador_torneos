@@ -28,8 +28,6 @@ class TenisController extends Controller
         return $jugadores;
     }
 
-    
-
     public function competir($jugador1, $jugador2){
         dd($jugador1);
     }
