@@ -41,10 +41,4 @@ class TenisController extends Controller
     public function rollStat(Persona $jugador){
 
     }
-
-    public function obtenerHabilidades($total){
-        $diff = floor($total) -20;
-        $diff = $diff > 0 ? $diff : 0;
-        return $diff;        
-    }
 }
