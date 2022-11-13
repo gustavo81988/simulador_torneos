@@ -11,6 +11,10 @@ class Torneo
         $this->partido   = $partido;
     }
 
+    public function competir(){
+        
+    }
+
     public function generarEncuentros($jugadores){
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
