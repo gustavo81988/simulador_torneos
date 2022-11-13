@@ -12,8 +12,6 @@ class Partido
     }
 
     public function obtenerEstadisticas(){
-        
+
     }
-
-
 }
