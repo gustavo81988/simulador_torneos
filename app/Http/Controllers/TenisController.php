@@ -8,13 +8,12 @@ use App\Services\Partido;
 
 class TenisController extends Controller
 {
-    public function index(Request $request){
-        $jugadores  = $this->jugadores($request);
-        $encuentros = $this->generarEncuentros($jugadores);
-        $this->rondaEliminatoria($encuentros);
+    public function index(Request $request,Torneo $torneo){
+        $jugadores = $this->listarJugadores($request);
+        $resultado = $torneo->ejecutar($jugadores);
     }
 
-    public function jugadores(Request $request){
+    public function listarJugadores(Request $request){
         $jugadores = [];
         foreach($request->all() as $jugador){
             $jugadores[] = new JugadorMasculino(
