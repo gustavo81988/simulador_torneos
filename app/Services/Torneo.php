@@ -14,14 +14,18 @@ class Torneo
     public function generarEncuentros($jugadores){
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
+        $ganadores  = [];
         foreach($encuentros as $encuentro){
             $jugador1 = $encuentro[0];
             $jugador2 = $encuentro[1];
-            $this->competir($jugador1,$jugador2);
+            $ganadores[] = $this->competir($jugador1,$jugador2);
         }
+
+        return $ganadores;
     }
 
     public function competir($jugador1,$jugador2){
-        
+        $ganador = $jugador1;
+        return $ganador;
     }
 }
