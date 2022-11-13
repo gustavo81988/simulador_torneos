@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Jugador;
-use App\Services\Hombres;
+use App\Services\JugadorMasculino;
 
 class TenisController extends Controller
 {
@@ -15,7 +15,7 @@ class TenisController extends Controller
     public function jugadores(Request $request){
         $jugadores = [];
         foreach($request->all() as $jugador){
-            $jugadores[] = new Persona(
+            $jugadores[] = new JugadorMasculino(
                 $jugador['primer_nombre'],
                 $jugador['segundo_nombre'],
                 $jugador['habilidad'],
