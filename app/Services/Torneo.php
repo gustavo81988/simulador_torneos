@@ -8,11 +8,12 @@ class Torneo
 
     public function __construct($jugadores){
         $this->jugadores = $jugadores;
-        $encuentros = $this->generarEncuentros($jugadores);
-        dd($encuentros);
+        $finalistas = $this->eliminatorias($jugadores);
+        $ganador    = $this->competir($finalistas[0],$finalistas[1]);
+        return $ganador;
     }
 
-    public function generarEncuentros($jugadores){
+    public function eliminatorias($jugadores){
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
         $ganadores  = [];
@@ -23,9 +24,9 @@ class Torneo
         }
 
         if(count($ganadores) != 2){
-            return $this->generarEncuentros($ganadores);
+            //se aplica recursividad hasta llegar a los finalistas
+            return $this->eliminatorias($ganadores);
         }else{
-            dd($ganadores);
             return $ganadores;
         }
     }
