@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Services\Jugador;
 use App\Services\JugadorMasculino;
 use App\Services\Torneo;
+use App\Services\Partido;
 
 class TenisController extends Controller
 {
@@ -27,13 +28,7 @@ class TenisController extends Controller
         return $jugadores;
     }
 
-    public function rondaEliminatoria($encuentros){
-        foreach($encuentros as $encuentro){
-            $jugador1 = $encuentro[0];
-            $jugador2 = $encuentro[1];
-            $this->competir($jugador1,$jugador2);
-        }
-    }
+    
 
     public function competir($jugador1, $jugador2){
         dd($jugador1);
