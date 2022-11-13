@@ -8,11 +8,10 @@ class Torneo
 
     public function __construct($jugadores){
         $this->jugadores = $jugadores;
-        $encuentros = $this->generarEncuentros();
+        $encuentros = $this->generarEncuentros($jugadores);
     }
 
-    public function generarEncuentros(){
-        $jugadores = $this->jugadores;
+    public function generarEncuentros($jugadores){
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
         foreach($encuentros as $encuentro){
@@ -20,6 +19,5 @@ class Torneo
             $jugador2 = $encuentro[1];
             $this->competir($jugador1,$jugador2);
         }
-        return $encuentros;
     }
 }
