@@ -6,9 +6,10 @@ use App\Services\Partido;
 
 class TenisController extends Controller
 {
-    public function index(Request $request,Torneo $torneo,Partido $partido){
+    public function index(Request $request){
         $jugadores = $this->listarJugadores($request);
-        $resultado = $torneo->ejecutar($jugadores);
+        $resultado = new Torneo($jugadores,$partido);
+        return $resultado;
     }
 
     public function listarJugadores(Request $request){

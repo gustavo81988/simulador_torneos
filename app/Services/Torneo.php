@@ -9,15 +9,13 @@ class Torneo
     public function __construct($jugadores,$partido){
         $this->jugadores = $jugadores;
         $this->partido   = $partido;
+        dd($this->generarEncuentros());
     }
 
-    public function competir(){
-        
-    }
-
-    public function generarEncuentros($jugadores){
+    public function generarEncuentros(){
+        $jugadores = $this->jugadores;
         shuffle($jugadores);
-        $encuentros = array_chunk($jugadores,2);
+        $encuentros = array_chunk(jugadores,2);
         return $encuentros;
     }
 
