@@ -4,13 +4,9 @@ use App\Services\Partido;
 
 class Torneo
 {
-    protected $jugadores;
-
     public function __construct(array $jugadores,Partido $partido){
-        $this->jugadores = $jugadores;
         $finalistas      = $this->eliminatorias($jugadores,$partido);
-        $ganador         = $partido->competir($finalistas[0],$finalistas[1]);
-        return $ganador;
+        return $partido->competir($finalistas[0],$finalistas[1]);
     }
 
     protected function eliminatorias(array $jugadores,Partido $partido){
