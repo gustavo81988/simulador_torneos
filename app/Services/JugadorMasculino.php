@@ -25,7 +25,7 @@ class JugadorMasculino implements Jugador
         return "{$this->primerNombre} {$this->segundoNombre}";
     }
 
-    public function estadisticas():array{
+    public function obtenerHabilidades():array{
         return [
             $this->habilidad,
             $this->fuerza,

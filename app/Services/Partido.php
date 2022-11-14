@@ -5,7 +5,7 @@ use App\Services\Interfaces\Jugador;
 class Partido
 {
     public function competir(Jugador $jugador1,Jugador $jugador2){
-        $this->obtenerEstadisticas(jugador);
+        $this->obtenerEstadisticas($jugador1);
         $ganador = $jugador1;
         return $ganador;
     }
