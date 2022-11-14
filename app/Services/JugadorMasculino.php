@@ -1,7 +1,6 @@
 <?php
 namespace App\Services;
-// use App\Services\Abstracts\Jugador;
-use App\Services\Interfaces\Jugador;
+use App\Services\Abstracts\Jugador;
 
 class JugadorMasculino extends Jugador
 {
@@ -31,8 +30,8 @@ class JugadorMasculino extends Jugador
         return $this->puntuacion;
     }
 
-    public function asignarPuntiacion(int $puntuacion):int{
-        $this->puntuacion = $puntuacion
+    public function asignarPuntuacion(int $puntuacion):int{
+        $this->puntuacion = $puntuacion;
     }
 
     public function obtenerHabilidades():array{
