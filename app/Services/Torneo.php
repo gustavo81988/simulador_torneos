@@ -20,6 +20,6 @@ class Torneo
         foreach($encuentros as $jugadores){
             $ganadores[] = $partido->competir($jugadores[0],$jugadores[1]);
         }
-        return count($ganadores) != 2 ? $this->eliminatorias($ganadores): $ganadores;
+        return count($ganadores) != 2 ? $this->eliminatorias($ganadores) : $ganadores;
     }
 }
