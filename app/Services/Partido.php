@@ -5,11 +5,12 @@ use App\Services\Interfaces\Jugador;
 class Partido
 {
     public function competir(Jugador $jugador1,Jugador $jugador2){
+        $this->obtenerEstadisticas(jugador);
         $ganador = $jugador1;
         return $ganador;
     }
 
-    protected function obtenerEstadisticas($jugador){
-        
+    protected function obtenerEstadisticas(Jugador $jugador){
+        dd($jugador);
     }
 }
