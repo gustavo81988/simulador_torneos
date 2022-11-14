@@ -4,11 +4,12 @@ use App\Services\Interfaces\Jugador;
 
 class JugadorMasculino implements Jugador
 {
-    public $primerNombre ;
-    public $segundoNombre;
-    public $habilidad;
-    public $fuerza;
-    public $velocidad;
+    protected $primerNombre ;
+    protected $segundoNombre;
+    protected $habilidad;
+    protected $puntuacion;
+    protected $fuerza;
+    protected $velocidad;
 
     public function __construct(
         $primerNombre, $segundoNombre, $habilidad,
@@ -23,6 +24,14 @@ class JugadorMasculino implements Jugador
 
     public function nombreCompleto():string{
         return "{$this->primerNombre} {$this->segundoNombre}";
+    }
+
+    public function obtenerPuntuacion(){
+        return $this->puntuacion;
+    }
+
+    public function asignarPuntiacion(int $puntuacion):int{
+        $this->puntuacion = $puntuacion
     }
 
     public function obtenerHabilidades():array{
