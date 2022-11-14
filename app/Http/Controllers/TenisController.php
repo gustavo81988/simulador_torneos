@@ -9,10 +9,10 @@ use App\Services\Habilidad;
 class TenisController extends Controller
 {
     public function index(Request $request,Partido $partido,Torneo $torneo){
-        $prueba = new Habilidad('Habilidad',20,2);
-        dd($prueba);
         $jugadores = $this->listarJugadores($request);
-        return $torneo->obtenerGanador($jugadores,$partido);
+        return $torneo->obtenerGanador($jugadores,$partido)
+            ->nombreCompleto()
+        ;
     }
 
     public function listarJugadores(Request $request){
