@@ -5,7 +5,7 @@ use App\Services\Partido;
 class Torneo
 {
     public function obtenerGanador(array $jugadores,Partido $partido){
-        $finalistas      = $this->eliminatorias($jugadores,$partido);
+        $finalistas = $this->eliminatorias($jugadores,$partido);
         return $partido->competir($finalistas[0],$finalistas[1]);
     }
 
