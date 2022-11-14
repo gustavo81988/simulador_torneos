@@ -3,12 +3,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Torneo;
 use App\Services\JugadorMasculino;
+use App\Services\Partido;
 
 class TenisController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request,Partido $partido){
         $jugadores = $this->listarJugadores($request);
-        $resultado = new Torneo($jugadores);
+        $resultado = new Torneo($jugadores,$partido);
         return $resultado;
     }
 

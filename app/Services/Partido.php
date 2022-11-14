@@ -1,14 +1,15 @@
 <?php
 namespace App\Services;
+use App\Services\Interfaces\Jugador;
 
 class Partido
 {
-    public function competir($jugador1,$jugador2){
+    public function competir(Jugador $jugador1,Jugador $jugador2){
         $ganador = $jugador1;
         return $ganador;
     }
 
-    public function obtenerEstadisticas($jugador){
-
+    protected function obtenerEstadisticas($jugador){
+        
     }
 }

@@ -1,18 +1,19 @@
 <?php
 namespace App\Services;
+use App\Services\Partido;
 
 class Torneo
 {
     public $jugadores;
 
-    public function __construct($jugadores){
+    public function __construct(array $jugadores,Partido $partido){
         $this->jugadores = $jugadores;
         $finalistas = $this->eliminatorias($jugadores);
         $ganador    = $this->competir($finalistas[0],$finalistas[1]);
         return $ganador;
     }
 
-    public function eliminatorias($jugadores){
+    protected function eliminatorias($jugadores){
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
         $ganadores  = [];
