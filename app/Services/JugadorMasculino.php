@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 use App\Services\Interfaces\Jugador;
+use App\Services\Habilidad;
 
 class JugadorMasculino implements Jugador
 {
@@ -27,9 +28,9 @@ class JugadorMasculino implements Jugador
 
     public function obtenerHabilidades():array{
         return [
-            $this->habilidad,
-            $this->fuerza,
-            $this->velocidad
+            new Habilidad('Habilidad',$this->habilidad,2),
+            new Habilidad('Fuerza',$this->fuerza,1),
+            new Habilidad('Velocidad',$this->velocidad,1)
         ];
     }
 }
