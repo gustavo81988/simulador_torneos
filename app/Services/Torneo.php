@@ -4,7 +4,8 @@ use App\Services\Partido;
 
 class Torneo
 {
-    public $jugadores;
+    protected $jugadores;
+    protected $partido;
 
     public function __construct(array $jugadores,Partido $partido){
         $this->jugadores = $jugadores;
