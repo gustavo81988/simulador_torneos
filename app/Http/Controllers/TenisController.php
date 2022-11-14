@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Services\Torneo;
 use App\Services\JugadorMasculino;
 use App\Services\Partido;
+use App\Services\Habilidad;
 
 class TenisController extends Controller
 {
@@ -19,8 +20,9 @@ class TenisController extends Controller
                 $jugador['primer_nombre'],
                 $jugador['segundo_nombre'],
                 $jugador['habilidad'],
-                $jugador['fuerza'],
-                $jugador['velocidad']
+                new Habilidad('Habilidad',$jugador['habilidad'],2),
+                new Habilidad('Fuerza',$jugador['fuerza'],1),
+                new Habilidad('Velocidad',$jugador['velocidad'],1)
             );
         }
         return $jugadores;
