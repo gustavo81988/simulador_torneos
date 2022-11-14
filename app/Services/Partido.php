@@ -5,15 +5,19 @@ use App\Services\Interfaces\Jugador;
 class Partido
 {
     public function competir(Jugador $jugador1,Jugador $jugador2){
-        foreach($jugador1->obtenerHabilidades() as $habilidad){
-            $roll = $habilidad->valor + rand(1,20);
-            // dd($habilidad->valor,$roll);
-        }
+        $this->roll($jugador1);
+        $this->roll($jugador2);
         $ganador = $jugador1;
         return $ganador;
     }
 
-    protected function obtenerEstadisticas(Jugador $jugador){
-        dd($jugador);
+    protected function roll(Jugador $jugador){
+        foreach($jugador->obtenerHabilidades() as $habilidad){
+            $roll[$habilidad->nombre] = [
+                'roll'        => $habilidad->valor + rand(1,20),
+                'ponderacion' => $habilidad->ponderacion
+            ];
+        }
+        return $roll;
     }
 }
