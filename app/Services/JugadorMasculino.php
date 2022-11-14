@@ -1,8 +1,9 @@
 <?php
 namespace App\Services;
+// use App\Services\Abstracts\Jugador;
 use App\Services\Interfaces\Jugador;
 
-class JugadorMasculino implements Jugador
+class JugadorMasculino extends Jugador
 {
     protected $primerNombre ;
     protected $segundoNombre;
