@@ -1,6 +1,5 @@
 <?php
 namespace App\Services;
-use App\Services\Interfaces\Jugador;
 
 class Partido
 {

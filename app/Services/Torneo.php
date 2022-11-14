@@ -9,7 +9,7 @@ class Torneo
         return $partido->competir($finalistas[0],$finalistas[1]);
     }
 
-    protected function eliminatorias(array $jugadores,Partido $partido){
+    protected function eliminatorias(array $jugadores,Partido $partido):array{
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
         $ganadores  = [];
