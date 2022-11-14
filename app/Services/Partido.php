@@ -1,10 +1,11 @@
 <?php
 namespace App\Services;
-use App\Services\Interfaces\Jugador;
+use App\Services\Abstracts\Jugador;
 
 class Partido
 {
     public function competir(Jugador $jugador1,Jugador $jugador2){
+        dd($jugador1);
         $this->roll($jugador1);
         $this->roll($jugador2);
         $ganador = $jugador1;
