@@ -1,11 +1,11 @@
 <?php
 namespace App\Services;
 
-class Partido
+class Habilidad
 {
-    protected $nombre;
-    protected $valor;
-    protected $ponderacion;
+    public $nombre;
+    public $valor;
+    public $ponderacion;
 
     public function __construc(string $nombre,int $valor,int $ponderacion){
         $this->nombre      = $nombre;
