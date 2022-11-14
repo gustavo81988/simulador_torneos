@@ -7,21 +7,9 @@ class Habilidad
     public $valor;
     public $ponderacion;
 
-    public function __construc(string $nombre,int $valor,int $ponderacion){
+    public function __construct(string $nombre,int $valor,int $ponderacion){
         $this->nombre      = $nombre;
         $this->valor       = $valor;
         $this->ponderacion = $ponderacion;
-    }
-
-    public function obtenerNombre(): string{
-        return $this->nombre;
-    }
-
-    public function obtenerValor(): int{
-        return $this->valor;
-    }
-
-    public function obtenerPonderacion(): int{
-        return $this->ponderacion;
     }
 }
