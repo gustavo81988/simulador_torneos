@@ -24,9 +24,9 @@ class JugadorMasculino extends Jugador
 
     public function obtenerHabilidades():array{
         return[
-            $this->habilidad,
-            $this->fuerza,
-            $this->velocidad
+            $this->habilidad->nombre => $this->habilidad,
+            $this->fuerza->nombre    => $this->fuerza,
+            $this->velocidad->nombre => $this->velocidad
         ];
     }
 
