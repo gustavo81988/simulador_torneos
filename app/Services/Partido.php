@@ -22,10 +22,25 @@ class Partido
                 );
             }
         }
-        dd(
-            $participantes[0]->obtenerPuntuacion(),
-            $participantes[1]->obtenerPuntuacion()
-        );
+
+        if($participantes[0]->obtenerPuntuacion() > $participantes[1]->obtenerPuntuacion()){
+            $ganador = $participantes[0];
+        }else if($participantes[0]->obtenerPuntuacion() < $participantes[1]->obtenerPuntuacion()){
+            $ganador = $participantes[1];
+        }else{
+            $ganador = $this->desempate($participantes);
+        }
+
+        return $ganador;
+    }
+
+    public function desempate($participantes){
+        $roll = rand(1,10);
+        if($roll <= 5){
+            $ganador = $participantes[0];
+        }else{
+            $ganador = $participantes[1];
+        }
         return $ganador;
     }
 }
