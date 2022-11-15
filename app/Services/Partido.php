@@ -5,7 +5,10 @@ use App\Services\Abstracts\Jugador;
 class Partido
 {
     public function competir($participantes){
+        $participantes[0]->asignarPuntuacion(0);
+        $participantes[1]->asignarPuntuacion(0);
         $habilidades = array_keys($participantes[0]->obtenerHabilidades());
+        
         foreach($habilidades as $nombre_habilidad){
             foreach($participantes as $participante){
                 $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
