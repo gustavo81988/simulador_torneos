@@ -8,7 +8,7 @@ class Partido
         $participantes[0]->asignarPuntuacion(0);
         $participantes[1]->asignarPuntuacion(0);
         $habilidades = array_keys($participantes[0]->obtenerHabilidades());
-        
+
         foreach($habilidades as $nombre_habilidad){
             foreach($participantes as $participante){
                 $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
@@ -38,12 +38,6 @@ class Partido
     }
 
     public function desempate($participantes){
-        $roll = rand(1,10);
-        if($roll <= 5){
-            $ganador = $participantes[0];
-        }else{
-            $ganador = $participantes[1];
-        }
-        return $ganador;
+        return rand(1,10) <= 5 ? $participantes[0] : $participantes[1];
     }
 }
