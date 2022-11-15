@@ -11,7 +11,7 @@ abstract class Jugador
         return $this->puntuacion;
     }
 
-    public function asignarPuntuacion(int $puntuacion):int{
+    public function asignarPuntuacion(int $puntuacion){
         $this->puntuacion = $puntuacion;
     }
 

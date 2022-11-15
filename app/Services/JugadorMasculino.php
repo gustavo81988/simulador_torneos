@@ -7,7 +7,7 @@ class JugadorMasculino extends Jugador
     protected $primerNombre ;
     protected $segundoNombre;
     protected $habilidad;
-    protected $puntuacion;
+    protected $puntuacion = 0;
     protected $fuerza;
     protected $velocidad;
 

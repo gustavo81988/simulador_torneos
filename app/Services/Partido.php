@@ -5,7 +5,10 @@ use App\Services\Abstracts\Jugador;
 class Partido
 {
     public function competir(Jugador $jugador1,Jugador $jugador2){
-        dd($jugador1);
+        dump($jugador1->obtenerPuntuacion());
+        $jugador1->asignarPuntuacion($jugador1->obtenerPuntuacion() +12);
+        $jugador1->asignarPuntuacion($jugador1->obtenerPuntuacion() +12);
+        dd($jugador1->obtenerPuntuacion());
         $this->roll($jugador1);
         $this->roll($jugador2);
         $ganador = $jugador1;
