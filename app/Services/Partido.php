@@ -9,8 +9,9 @@ class Partido
         foreach($habilidades as $nombre_habilidad){
             foreach($participantes as $participante){
                 $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
-                $roll      = rand(1,20) + $habilidad->valor;
+                $roll[]    = rand(1,20) + $habilidad->valor;
             }
+            $roll_ganador = array_search(max($roll), $roll);
         }
         return $ganador;
     }
