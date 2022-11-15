@@ -5,9 +5,13 @@ use App\Services\Abstracts\Jugador;
 class Partido
 {
     public function competir($participantes){
-        foreach($participantes as $participante){
-            dd($participante->obtenerHabilidades());
+        $habilidades = array_keys($participantes[0]->obtenerHabilidades());
+        foreach($habilidades as $hablidad){
+            foreach($participantes as $participante){
+                dd($participante->obtenerHabilidades());
+            }
         }
+        
         dump($jugador1->obtenerPuntuacion());
         $jugador1->asignarPuntuacion($jugador1->obtenerPuntuacion() +12);
         $jugador1->asignarPuntuacion($jugador1->obtenerPuntuacion() +12);
