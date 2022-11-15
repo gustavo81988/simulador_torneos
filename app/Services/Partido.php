@@ -12,7 +12,20 @@ class Partido
                 $roll[]    = rand(1,20) + $habilidad->valor;
             }
             $roll_ganador = array_search(max($roll), $roll);
+            if($roll_ganador){
+                $participantes[0]->asignarPuntuacion(
+                    $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
+                );
+            }else{
+                $participantes[1]->asignarPuntuacion(
+                    $habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
+                );
+            }
         }
+        dd(
+            $participantes[0]->obtenerPuntuacion(),
+            $participantes[1]->obtenerPuntuacion()
+        );
         return $ganador;
     }
 }
