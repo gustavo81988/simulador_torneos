@@ -8,7 +8,7 @@ class Partido
         $habilidades = array_keys($participantes[0]->obtenerHabilidades());
         foreach($habilidades as $hablidad){
             foreach($participantes as $participante){
-                dd($participante->obtenerHabilidades());
+                dd($participante->obtenerHabilidades()[$hablidad]);
             }
         }
         
