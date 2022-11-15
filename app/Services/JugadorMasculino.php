@@ -29,10 +29,4 @@ class JugadorMasculino extends Jugador
             $this->velocidad->nombre => $this->velocidad
         ];
     }
-
-    public function listaHabilidades(){
-        return[
-            1,2
-        ];
-    }
 }
