@@ -6,9 +6,7 @@ class Partido
 {
     public function competir($participantes){
         foreach($participantes as $participante){
-            foreach($participante->obtenerHabilidades() as $habilidad){
-                dd($habilidad);
-            }
+            dd($participante->obtenerHabilidades());
         }
         dump($jugador1->obtenerPuntuacion());
         $jugador1->asignarPuntuacion($jugador1->obtenerPuntuacion() +12);
