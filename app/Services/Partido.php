@@ -10,16 +10,7 @@ class Partido
         $habilidades = array_keys($participantes[0]->obtenerHabilidades());
 
         foreach($habilidades as $nombre_habilidad){
-            $roll_ganador =$this->rollHabilidad($participantes);
-            if($roll_ganador == 1){
-                $participantes[1]->asignarPuntuacion(
-                    $habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
-                );
-            }else{
-                $participantes[0]->asignarPuntuacion(
-                    $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
-                );
-            }
+            $this->asignarPuntuacion($this->rollHabilidad($participantes));
         }
 
         if($participantes[0]->obtenerPuntuacion() > $participantes[1]->obtenerPuntuacion()){
@@ -31,6 +22,18 @@ class Partido
         }
 
         return $ganador;
+    }
+
+    protected function asignarPuntuacion(){
+        if($roll_ganador == 1){
+            $participantes[1]->asignarPuntuacion(
+                $habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
+            );
+        }else{
+            $participantes[0]->asignarPuntuacion(
+                $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
+            );
+        }
     }
 
     protected function rollHabilidad($participantes){
