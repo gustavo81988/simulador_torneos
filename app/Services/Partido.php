@@ -10,13 +10,7 @@ class Partido
         $habilidades = array_keys($participantes[0]->obtenerHabilidades());
 
         foreach($habilidades as $nombre_habilidad){
-            $roll = [];
-            foreach($participantes as $participante){
-                $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
-                $roll[]    = rand(1,20) + $habilidad->valor;
-            }
-            $roll_ganador = array_search(max($roll), $roll);
-
+            $roll_ganador =$this->rollHabilidad($participantes);
             if($roll_ganador == 1){
                 $participantes[1]->asignarPuntuacion(
                     $habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
@@ -39,7 +33,16 @@ class Partido
         return $ganador;
     }
 
-    public function desempate($participantes){
+    protected function rollHabilidad($participantes){
+        $roll = [];
+        foreach($participantes as $participante){
+            $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
+            $roll[]    = rand(1,20) + $habilidad->valor;
+        }
+        return array_search(max($roll), $roll);
+    }
+
+    protected function desempate($participantes){
         return rand(1,10) <= 5 ? $participantes[0] : $participantes[1];
     }
 }
