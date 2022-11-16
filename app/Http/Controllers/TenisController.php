@@ -21,9 +21,9 @@ class TenisController extends Controller
             $jugadores[] = new JugadorMasculino(
                 $jugador['primer_nombre'],
                 $jugador['segundo_nombre'],
-                new Habilidad('Habilidad',$jugador['habilidad'],2),
+                new Habilidad('Habilidad',$jugador['habilidad'],3),
                 new Habilidad('Fuerza',$jugador['fuerza'],1),
-                new Habilidad('Velocidad',$jugador['velocidad'],1)
+                new Habilidad('Velocidad',$jugador['velocidad'],3)
             );
         }
         return $jugadores;
