@@ -10,11 +10,15 @@ class Partido
         $habilidades = array_keys($participantes[0]->obtenerHabilidades());
 
         foreach($habilidades as $nombre_habilidad){
+            $roll = [];
             foreach($participantes as $participante){
                 $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
                 $roll[]    = rand(1,20) + $habilidad->valor;
             }
+            dump('Roll',$roll);
             $roll_ganador = array_search(max($roll), $roll);
+            dump('Roll ganador',$roll_ganador);
+
             if($roll_ganador){
                 $participantes[0]->asignarPuntuacion(
                     $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
