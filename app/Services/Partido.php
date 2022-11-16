@@ -5,7 +5,7 @@ use Illuminate\Support\Arr;
 
 class Partido
 {
-    public function competir($participantes){
+    public function competir(array $participantes){
         $participantes[0]->asignarPuntuacion(0);
         $participantes[1]->asignarPuntuacion(0);
         $habilidades = $participantes[0]->obtenerHabilidades();
@@ -29,7 +29,7 @@ class Partido
         return $ganador;
     }
 
-    protected function rollHabilidades($participantes,$nombre_habilidad){
+    protected function rollHabilidades(array $participantes,string $nombre_habilidad):int{
         $roll = [];
         foreach($participantes as $participante){
             $valor_habilidad_participante = $participante->obtenerHabilidades()[$nombre_habilidad]->valor;
@@ -38,7 +38,7 @@ class Partido
         return array_search(max($roll), $roll);
     }
 
-    protected function asignarPuntuacionParticipante($roll,$participantes,$atributos_habilidad){
+    protected function asignarPuntuacionParticipante(int $roll,array $participantes,$atributos_habilidad):void{
         $indice_participante = $roll == 1 ? 1 : 0;
         $participantes[$indice_participante]->asignarPuntuacion(
             $atributos_habilidad->ponderacion + $participantes[$indice_participante]->obtenerPuntuacion() 
