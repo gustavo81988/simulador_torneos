@@ -15,17 +15,15 @@ class Partido
                 $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
                 $roll[]    = rand(1,20) + $habilidad->valor;
             }
-            dump('Roll',$roll);
             $roll_ganador = array_search(max($roll), $roll);
-            dump('Roll ganador',$roll_ganador);
 
-            if($roll_ganador){
-                $participantes[0]->asignarPuntuacion(
-                    $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
-                );
-            }else{
+            if($roll_ganador == 1){
                 $participantes[1]->asignarPuntuacion(
                     $habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
+                );
+            }else{
+                $participantes[0]->asignarPuntuacion(
+                    $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
                 );
             }
         }
