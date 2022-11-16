@@ -13,8 +13,8 @@ class Torneo
         // shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
         $ganadores  = [];
-        foreach($encuentros as $paraticipantes){
-            $ganadores[] = $partido->competir($paraticipantes);
+        foreach($encuentros as $participantes){
+            $ganadores[] = $partido->competir($participantes);
         }
         return count($ganadores) != 2 ? 
             $this->eliminatorias($ganadores,$partido) : $ganadores;
