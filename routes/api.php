@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('torneo_masculino','TorneoMasculinoController@index')
-    ->name('api.tenis.index')
+    ->name('api.torneo_masculino.index')
 ;
 
-Route::post('torneo_femenino','TorneoMasculinoController@index')
-    ->name('api.tenis.index')
+Route::post('torneo_femenino','TorneoFemeninoController@index')
+    ->name('api.torneo_femenino.index')
 ;
 
 
