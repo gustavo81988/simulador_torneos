@@ -15,9 +15,12 @@ class Partido
             $this->asignarPuntuacionParticipante($roll,$participantes,$atributos_habilidad);
         }
 
-        if($participantes[0]->obtenerPuntuacion() > $participantes[1]->obtenerPuntuacion()){
+        $punt_total_jugador1 = $participantes[0]->obtenerPuntuacion();
+        $punt_total_jugador2 = $participantes[1]->obtenerPuntuacion();
+
+        if($punt_total_jugador1 > $punt_total_jugador2){
             $ganador = $participantes[0];
-        }else if($participantes[0]->obtenerPuntuacion() < $participantes[1]->obtenerPuntuacion()){
+        }else if($punt_total_jugador1 < $punt_total_jugador2){
             $ganador = $participantes[1];
         }else{
             $ganador = $this->desempate($participantes);
@@ -29,8 +32,8 @@ class Partido
     protected function rollHabilidades($participantes,$nombre_habilidad){
         $roll = [];
         foreach($participantes as $participante){
-            $habilidad_participante = $participante->obtenerHabilidades()[$nombre_habilidad];
-            $roll[]    = rand(1,20) + $habilidad_participante->valor;
+            $valor_habilidad_participante = $participante->obtenerHabilidades()[$nombre_habilidad]->valor;
+            $roll[] = rand(1,20) + $valor_habilidad_participante;
         }
         return array_search(max($roll), $roll);
     }
