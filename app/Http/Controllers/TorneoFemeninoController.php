@@ -6,7 +6,7 @@ use App\Services\JugadorMasculino;
 use App\Services\Partido;
 use App\Services\Habilidad;
 
-class TenisController extends Controller
+class TorneoFemeninoController extends Controller
 {
     public function index(Request $request,Partido $partido,Torneo $torneo){
         $jugadores = $this->listarJugadores($request);

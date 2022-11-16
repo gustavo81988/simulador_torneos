@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('tenis','TenisController@index')
+Route::post('torneo_masculino','TorneoMasculinoController@index')
     ->name('api.tenis.index')
 ;
+
+Route::post('torneo_femenino','TorneoMasculinoController@index')
+    ->name('api.tenis.index')
+;
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
