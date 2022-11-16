@@ -10,7 +10,7 @@ class Torneo
     }
 
     protected function eliminatorias(array $jugadores,Partido $partido):array{
-        shuffle($jugadores);
+        // shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
         $ganadores  = [];
         foreach($encuentros as $paraticipantes){
