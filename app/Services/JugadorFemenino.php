@@ -8,6 +8,7 @@ class JugadorFemenino implements Jugador
     public $segundoNombre;
     public $habilidad;
     public $tiempo_reaccion;
+    protected $puntuacion;
 
     public function __construct(
         $primerNombre,$segundoNombre,$habilidad,
@@ -24,9 +25,9 @@ class JugadorFemenino implements Jugador
     }
 
     public function obtenerHabilidades():array{
-        return [
-            $this->habilidad,
-            $this->tiempo_reaccion
+        return[
+            $this->habilidad->nombre => $this->habilidad,
+            $this->tiempo_reaccion->nombre    => $this->tiempo_reaccion
         ];
     }
 }

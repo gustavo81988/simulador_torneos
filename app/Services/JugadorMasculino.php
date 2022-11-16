@@ -7,9 +7,9 @@ class JugadorMasculino extends Jugador
     protected $primerNombre ;
     protected $segundoNombre;
     protected $habilidad;
-    protected $puntuacion;
     protected $fuerza;
     protected $velocidad;
+    protected $puntuacion;
 
     public function __construct(
         $primerNombre, $segundoNombre, $habilidad,
