@@ -36,15 +36,10 @@ class Partido
     }
 
     protected function asignarPuntuacionParticipante($roll,$participantes,$atributos_habilidad){
-        if($roll == 1){
-            $participantes[1]->asignarPuntuacion(
-                $atributos_habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
-            );
-        }else{
-            $participantes[0]->asignarPuntuacion(
-                $atributos_habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
-            );
-        }
+        $indice_participante = $roll == 1 ? 1 : 0;
+        $participantes[$indice_participante]->asignarPuntuacion(
+            $atributos_habilidad->ponderacion + $participantes[$indice_participante]->obtenerPuntuacion() 
+        );
     }
 
     protected function desempate($participantes){
