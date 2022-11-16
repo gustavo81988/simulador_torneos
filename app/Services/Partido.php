@@ -1,31 +1,31 @@
 <?php
 namespace App\Services;
 use App\Services\Abstracts\Jugador;
+use Illuminate\Support\Arr;
 
 class Partido
 {
     public function competir($participantes){
         $participantes[0]->asignarPuntuacion(0);
         $participantes[1]->asignarPuntuacion(0);
-        $habilidades = array_keys($participantes[0]->obtenerHabilidades());
+        $habilidades = $participantes[0]->obtenerHabilidades();
 
-        foreach($habilidades as $nombre_habilidad){
+        foreach($habilidades as $nombre_habilidad => $atributos_habilidad){
             $roll = [];
             foreach($participantes as $participante){
-                $habilidad = $participante->obtenerHabilidades()[$nombre_habilidad];
-                dd($habilidad);
-                $roll[]    = rand(1,20) + $habilidad->valor;
+                $habilidad_participante = $participante->obtenerHabilidades()[$nombre_habilidad];
+                $roll[]    = rand(1,20) + $habilidad_participante->valor;
             }
 
             $roll_ganador = array_search(max($roll), $roll);
 
             if($roll_ganador == 1){
                 $participantes[1]->asignarPuntuacion(
-                    $habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
+                    $atributos_habilidad->ponderacion + $participantes[1]->obtenerPuntuacion() 
                 );
             }else{
                 $participantes[0]->asignarPuntuacion(
-                    $habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
+                    $atributos_habilidad->ponderacion + $participantes[0]->obtenerPuntuacion()
                 );
             }
         }
