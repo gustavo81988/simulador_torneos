@@ -14,14 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('torneo_masculino','TorneoMasculinoController@index')
-    ->name('api.torneo_masculino.index')
-;
+Route::post('torneo_masculino','TorneoMasculinoController@index')->name('api.torneo_masculino.index');
+Route::post('torneo_femenino','TorneoFemeninoController@index')->name('api.torneo_femenino.index');
 
-Route::post('torneo_femenino','TorneoFemeninoController@index')
-    ->name('api.torneo_femenino.index')
-;
-
+Route::post('usuario/guardar','UsuarioController@guardar')->name('api.usuario.guardar');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
