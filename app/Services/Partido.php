@@ -1,11 +1,11 @@
 <?php
 namespace App\Services;
 use App\Services\Abstracts\Jugador;
-use Illuminate\Support\Arr;
+use App\Partido as PartidoModel;
 
 class Partido
 {
-    public function competir(array $participantes){
+    public function competir(array $participantes,$torneo){
         $participantes[0]->asignarPuntuacion(0);
         $participantes[1]->asignarPuntuacion(0);
         $habilidades = $participantes[0]->obtenerHabilidades();
@@ -17,6 +17,14 @@ class Partido
 
         $punt_total_jugador1 = $participantes[0]->obtenerPuntuacion();
         $punt_total_jugador2 = $participantes[1]->obtenerPuntuacion();
+
+        PartidoModel::create([
+            'id_torneo' => $torneo->id,
+            'id_jugador_1' => $participantes[0]->obtenerId(),
+            'id_jugador_2' => $participantes[1]->obtenerId(),
+            'puntuacion_jugador_1' => $punt_total_jugador1,
+            'puntuacion_jugador_2'=> $punt_total_jugador2
+        ]);
 
         if($punt_total_jugador1 > $punt_total_jugador2){
             $ganador = $participantes[0];

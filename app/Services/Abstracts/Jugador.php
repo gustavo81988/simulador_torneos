@@ -7,6 +7,11 @@ abstract class Jugador
         return "{$this->nombre} {$this->apellido}";
     }
 
+    public function obtenerId(){
+        return $this->id;
+    }
+
+
     public function obtenerPuntuacion(){
         return $this->puntuacion;
     }

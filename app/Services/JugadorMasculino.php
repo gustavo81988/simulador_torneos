@@ -4,6 +4,7 @@ use App\Services\Abstracts\Jugador;
 
 class JugadorMasculino extends Jugador
 {
+    protected $id;
     protected $nombre ;
     protected $apellido;
     protected $habilidad;
@@ -12,9 +13,10 @@ class JugadorMasculino extends Jugador
     protected $puntuacion;
 
     public function __construct(
-        $nombre, $apellido, $habilidad,
+        $id,$nombre, $apellido, $habilidad,
         $fuerza,$velocidad
     ){
+        $this->id        = $id;
         $this->nombre    = $nombre;
         $this->apellido  = $apellido;
         $this->habilidad = $habilidad;

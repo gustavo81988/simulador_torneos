@@ -20,6 +20,7 @@ class TorneoMasculinoController extends Controller
         $jugadores = [];
         foreach($usuarios as $jugador){
             $jugadores[] = new JugadorMasculino(
+                $jugador['id'],
                 $jugador['nombre'],
                 $jugador['apellido'],
                 new Habilidad('Habilidad',$jugador['habilidad'],3),
