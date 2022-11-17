@@ -4,7 +4,7 @@ namespace App\Services\Abstracts;
 abstract class Jugador 
 {
     public function nombreCompleto():string{
-        return "{$this->primerNombre} {$this->segundoNombre}";
+        return "{$this->nombre} {$this->apellido}";
     }
 
     public function obtenerPuntuacion(){

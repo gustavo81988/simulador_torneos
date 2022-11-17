@@ -4,22 +4,22 @@ use App\Services\Abstracts\Jugador;
 
 class JugadorMasculino extends Jugador
 {
-    protected $primerNombre ;
-    protected $segundoNombre;
+    protected $nombre ;
+    protected $apellido;
     protected $habilidad;
     protected $fuerza;
     protected $velocidad;
     protected $puntuacion;
 
     public function __construct(
-        $primerNombre, $segundoNombre, $habilidad,
+        $nombre, $apellido, $habilidad,
         $fuerza,$velocidad
     ){
-        $this->primerNombre  = $primerNombre;
-        $this->segundoNombre = $segundoNombre;
-        $this->habilidad     = $habilidad;
-        $this->fuerza        = $fuerza;
-        $this->velocidad     = $velocidad;
+        $this->nombre    = $nombre;
+        $this->apellido  = $apellido;
+        $this->habilidad = $habilidad;
+        $this->fuerza    = $fuerza;
+        $this->velocidad = $velocidad;
     }
 
     public function obtenerHabilidades():array{

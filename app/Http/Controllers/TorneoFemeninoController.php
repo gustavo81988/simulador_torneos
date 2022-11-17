@@ -19,8 +19,8 @@ class TorneoFemeninoController extends Controller
         $jugadores = [];
         foreach($request->all() as $jugador){
             $jugadores[] = new JugadorFemenino(
-                $jugador['primer_nombre'],
-                $jugador['segundo_nombre'],
+                $jugador['nombre'],
+                $jugador['apellido'],
                 new Habilidad('Habilidad',$jugador['habilidad'],1),
                 new Habilidad('Tiempo de Reaccion',$jugador['tiempo_reaccion'],1)
             );

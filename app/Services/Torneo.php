@@ -1,12 +1,18 @@
 <?php
 namespace App\Services;
 use App\Services\Partido;
+use App\Torneo as ModelTorneo;
 
 class Torneo
 {
-    public function obtenerGanador(array $jugadores,Partido $partido){
+    public function obtenerGanador(string $nombre,array $jugadores,Partido $partido){
+        $torneo     = $this->crearTorneo($nombre);
         $finalistas = $this->eliminatorias($jugadores,$partido);
         return $partido->competir($finalistas);
+    }
+
+    public function crearTorneo(string $nombre){
+        return ModelTorneo::create(['nombre'=> $nombre]);
     }
 
     protected function eliminatorias(array $jugadores,Partido $partido):array{
