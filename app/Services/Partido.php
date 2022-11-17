@@ -15,17 +15,9 @@ class Partido
             $this->asignarPuntuacionParticipante($roll,$participantes,$atributos_habilidad);
         }
 
+        $this->guardarPartida($torneo->id,$participantes,$ronda);
         $punt_total_jugador1 = $participantes[0]->obtenerPuntuacion();
         $punt_total_jugador2 = $participantes[1]->obtenerPuntuacion();
-
-        PartidoModel::create([
-            'id_torneo'            => $torneo->id,
-            'id_jugador_1'         => $participantes[0]->obtenerId(),
-            'id_jugador_2'         => $participantes[1]->obtenerId(),
-            'ronda'                => $ronda,
-            'puntuacion_jugador_1' => $punt_total_jugador1,
-            'puntuacion_jugador_2' => $punt_total_jugador2
-        ]);
 
         if($punt_total_jugador1 > $punt_total_jugador2){
             $ganador = $participantes[0];
@@ -36,6 +28,17 @@ class Partido
         }
 
         return $ganador;
+    }
+
+    protected function guardarPartida($id_torneo,$participantes,$ronda): void{
+        PartidoModel::create([
+            'id_torneo'            => $id_torneo,
+            'id_jugador_1'         => $participantes[0]->obtenerId(),
+            'id_jugador_2'         => $participantes[1]->obtenerId(),
+            'ronda'                => $ronda,
+            'puntuacion_jugador_1' => $participantes[0]->obtenerPuntuacion(),
+            'puntuacion_jugador_2' => $participantes[1]->obtenerPuntuacion()
+        ]);
     }
 
     protected function rollHabilidades(array $participantes,string $nombre_habilidad):int{
