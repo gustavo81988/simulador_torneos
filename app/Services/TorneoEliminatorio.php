@@ -7,6 +7,7 @@ class TorneoEliminatorio
 {
     public function obtenerGanador($torneo,array $jugadores,Partido $partido):Jugador{
         $ganador = $this->eliminatorias($jugadores,$partido,$torneo);
+        $this->guardarGanador($ganador,$torneo);
         return $ganador;
     }
 
@@ -23,5 +24,11 @@ class TorneoEliminatorio
         return count($ganadores) != 2 ? 
             $this->eliminatorias($ganadores,$partido,$torneo,$ronda) :
             $partido->competir($ganadores,$torneo,$ronda);
+    }
+
+    protected function guardarGanador(Jugador $ganador,$torneo):void{
+        $torneo->update([
+            'id_usuario_ganador' => $ganador->obtenerId()
+        ]);
     }
 }
