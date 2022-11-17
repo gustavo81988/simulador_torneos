@@ -18,6 +18,7 @@ class CrearTablaPartidos extends Migration
             $table->foreignId('id_torneo');
             $table->foreignId('id_jugador_1');
             $table->foreignId('id_jugador_2');
+            $table->integer('ronda')->unsigned();
             $table->integer('puntuacion_jugador_1')->unsigned();
             $table->integer('puntuacion_jugador_2')->unsigned();
             $table->timestamps();
