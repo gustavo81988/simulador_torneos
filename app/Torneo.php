@@ -33,4 +33,24 @@ class Torneo extends Model
         $request->id_ganador ? $torneos->where('usuarios.id',$request->id_ganador) : NULL;
         return $torneos->get();
     }
+
+    public function detalleTorneo(\Illuminate\Http\Request $request): \Illuminate\Support\Collection{
+        $torneos = DB::Table('partidos')->select(DB::raw('
+                CONCAT(jugador_1.nombre, " ",jugador_1.apellido) as jugador_1,
+                CONCAT(jugador_2.nombre, " ",jugador_2.apellido) as jugador_2,
+                puntuacion_jugador_1,
+                puntuacion_jugador_2,
+                ronda
+            '))
+            ->join('usuarios as jugador_1',function($join){
+                $join->on('jugador_1.id','=','partidos.id_jugador_1');
+            })
+            ->join('usuarios as jugador_2',function($join){
+                $join->on('jugador_2.id','=','partidos.id_jugador_2');
+            })
+            ->where('partidos.id_torneo',$request->id_torneo)
+            ->orderBy('ronda','asc')
+        ;
+        return $torneos->get();
+    }
 }
