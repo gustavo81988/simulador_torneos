@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Torneo as TorneoModel;
-use App\Http\Requests\ListarTorneosRequest;
-use App\Http\Requests\DetalleTorneoRequest;
+use App\Http\Requests\Torneo\ListarTorneosRequest;
+use App\Http\Requests\Torneo\DetalleTorneoRequest;
 
 class TorneosController extends Controller
 {
