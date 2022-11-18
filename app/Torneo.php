@@ -2,17 +2,14 @@
 
 namespace App;
 use DB;
-
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class Torneo extends Model
 {
     protected $guarded = ['id'];
     
-    public function listarTorneos(Request $request){
-        $torneos = DB::table('torneos')
-            ->select(DB::raw('
+    public function listarTorneos(\Illuminate\Http\Request $request): \Illuminate\Support\Collection{
+        $torneos = Torneo::select(DB::raw('
                 torneos.id as id_torneo,
                 torneos.nombre as nombre_torneo,
                 (CASE torneos.genero
@@ -28,7 +25,6 @@ class Torneo extends Model
                 $join->on('usuarios.id','=','torneos.id_usuario_ganador');
             })
         ;
-
         $request->fecha   ? $torneos->whereDate('torneos.created_at',date($request->fecha)) : NULL;
         $request->genero  ? $torneos->where('torneos.genero',$request->genero) : NULL;
         $request->ganador ? $torneos->where('usuarios.id',$request->ganador) : NULL;
