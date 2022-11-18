@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('torneo_masculino','TorneoMasculinoController@index')->name('api.torneo_masculino.index');
-Route::post('torneo_femenino','TorneoFemeninoController@index')->name('api.torneo_femenino.index');
-
 Route::get('listar_torneos','TorneosController@listarTorneos')->name('api.listar_torneos');
 Route::get('detalle_torneo','TorneosController@detalleTorneo')->name('api.detalle_torneo');
+Route::post('torneo_masculino','TorneosController@torneoMasculino')->name('api.torneo_masculino.index');
+
 
 Route::post('usuario/guardar','UsuarioController@guardar')->name('api.usuario.guardar');
 
