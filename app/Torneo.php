@@ -25,7 +25,10 @@ class Torneo extends Model
                 $join->on('usuarios.id','=','torneos.id_usuario_ganador');
             })
         ;
-        $request->fecha      ? $torneos->whereDate('torneos.created_at',date($request->fecha)) : NULL;
+        if($request->fecha_inicio and $request->fecha_fin){
+            $torneos->whereDate('torneos.created_at','>=',date($request->fecha_inicio)) 
+                ->whereDate('torneos.created_at','<=',date($request->fecha_fin));
+        } 
         $request->genero     ? $torneos->where('torneos.genero',$request->genero) : NULL;
         $request->id_ganador ? $torneos->where('usuarios.id',$request->id_ganador) : NULL;
         return $torneos->get();

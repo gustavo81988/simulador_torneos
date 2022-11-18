@@ -20,7 +20,8 @@ class ListarTorneosRequest extends FormRequest
         return [
             'date_format' => 'El formato de fecha debe ser yyyy-mm-dd.',
             'in' => 'Genero debe ser M (Masculino) o F (Femenino).',
-            'integer' => 'El campo id_ganador debe ser un entero'
+            'integer' => 'El campo id_ganador debe ser un entero',
+            'required_with' => 'Debe ingresar un rango de fecha valido (fecha_inicio / fecha_fin).'
         ];
     }
 
@@ -32,7 +33,8 @@ class ListarTorneosRequest extends FormRequest
     public function rules()
     {
         return [
-            'fecha' => 'date_format:Y-m-d',
+            'fecha_inicio' => 'date_format:Y-m-d|required_with:fecha_fin',
+            'fecha_fin'    => 'date_format:Y-m-d|required_with:fecha_inicio',
             'genero' => 'in:M,F',
             'id_ganador' => 'integer'
         ];
