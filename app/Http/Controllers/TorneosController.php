@@ -3,19 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Torneo as TorneoModel;
 
 class TorneosController extends Controller
 {
-    public function listarTorneos(Request $request)
+    public function listarTorneos(Request $request,TorneoModel $torneoModel)
     {
-        $torneo = DB::table('torneos')
-            ->select(DB::raw("
-                *
-            "))
-            ->join('usuarios',function($join){
-                $join->on('usuarios.id','=','torneos.id_usuario_ganador');
-            })
-        ;
-        return response()->json($torneo);
+        return response()->json($torneoModel->listarTorneos($request));
     }
 }

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('torneo_masculino','TorneoMasculinoController@index')->name('api.torneo_masculino.index');
 Route::post('torneo_femenino','TorneoFemeninoController@index')->name('api.torneo_femenino.index');
 
-Route::get('listar_torneos','TorneosController@index')->name('index');
+Route::get('listar_torneos','TorneosController@listarTorneos')->name('index');
 
 Route::post('usuario/guardar','UsuarioController@guardar')->name('api.usuario.guardar');
 
