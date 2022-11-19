@@ -17,8 +17,14 @@ class TorneosController extends Controller
     public function torneoMasculino(
         Request $request,Usuario $usuario,Partido $partido,TorneoEliminatorio $torneo
     ){
-        $jugadores    = $usuario->jugadoresMasculinos(Usuario::whereIn('id',$request->jugadores)->get());
+        $usuarios     = Usuario::whereIn('id',$request->jugadores)->get();
         $model_torneo = ModelTorneo::create(['nombre'=> $request->nombre_torneo,'genero'=> $request->genero]);
+
+        if($request->genero == 'M'){
+            $jugadores = $usuario->jugadoresMasculinos($usuarios);
+        }else{
+            $jugadores = $usuario->jugadoresFemeninos($usuarios);
+        }
 
         return $torneo->obtenerGanador(
             $model_torneo,$jugadores,$partido
