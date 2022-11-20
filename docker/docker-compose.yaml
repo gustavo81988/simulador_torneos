@@ -1,0 +1,59 @@
+version: "3.3"
+
+services:
+  #Nginx Service
+  web:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "443:443"
+    depends_on:
+      - php
+    links:
+      - php
+    volumes:
+      - /var/www/html:/var/www/html
+    #networks:
+            # - app-network
+
+  php:
+    build:
+      context: ./php72
+      dockerfile: Dockerfile
+    hostname: php72
+    container_name: php72
+    restart: always
+    expose:  
+      - 9000
+    volumes:
+      - /var/www/html:/var/www/html
+
+  db:
+    build:  
+      context: ./mysql
+      dockerfile: Dockerfile
+    container_name: mysql57
+    image: mysql:5.7.34
+    command: mysqld --sql_mode=""
+    volumes:
+      - /home/ubuntu/docker-dir/mysql/data:/var/lib/mysql
+    restart: always
+    ports:
+        - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1234
+  
+#Docker Networks
+#networks:
+#  app-network:
+#    driver: bridge
+
+volumes:
+  html: {}
+  data: {}
