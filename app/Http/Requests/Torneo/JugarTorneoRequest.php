@@ -4,6 +4,7 @@ namespace App\Http\Requests\Torneo;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\PotenciaDeDos;
+use App\Rules\ArrayValoresUnicos;
 
 class JugarTorneoRequest extends FormRequest
 {
@@ -25,7 +26,10 @@ class JugarTorneoRequest extends FormRequest
     public function rules()
     {
         return [
-            'jugadores' => [new PotenciaDeDos($this->jugadores)],
+            'jugadores' => [
+                new PotenciaDeDos($this->jugadores),
+                new ArrayValoresUnicos($this->jugadores)
+            ],
         ];
     }
 }
