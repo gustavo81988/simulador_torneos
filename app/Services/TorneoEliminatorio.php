@@ -2,17 +2,18 @@
 namespace App\Services;
 use App\Services\Partido;
 use App\Services\Abstracts\Jugador;
+use App\Torneo;
 
 class TorneoEliminatorio
 {
-    public function obtenerGanador($torneo,array $jugadores,Partido $partido):Jugador{
+    public function obtenerGanador(Torneo $torneo,array $jugadores,Partido $partido):Jugador{
         $ganador = $this->eliminatorias($jugadores,$partido,$torneo);
         $this->guardarGanador($ganador,$torneo);
         return $ganador;
     }
 
     protected function eliminatorias(
-        array $jugadores,Partido $partido,$torneo,$ronda = 1
+        array $jugadores,Partido $partido,Torneo $torneo,int $ronda = 1
     ):Jugador{
         shuffle($jugadores);
         $encuentros = array_chunk($jugadores,2);
@@ -26,7 +27,7 @@ class TorneoEliminatorio
             $partido->competir($ganadores,$torneo,$ronda);
     }
 
-    protected function guardarGanador(Jugador $ganador,$torneo):void{
+    protected function guardarGanador(Jugador $ganador,Torneo $torneo):void{
         $torneo->update([
             'id_usuario_ganador' => $ganador->obtenerId()
         ]);
