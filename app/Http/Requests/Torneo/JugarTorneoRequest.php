@@ -22,6 +22,7 @@ class JugarTorneoRequest extends FormRequest
     public function messages()
     {
         return [
+            'jugadores.min' => 'Debe ingresar al menos 2 :attribute.',
             'genero.in'       => ':attribute debe ser M (Masculino) o F (Femenino).',
             'genero.required' => 'El campo :attribute es obligatorio',
             'nombre_torneo.required' => 'El campo :attribute es obligatorio',
@@ -41,7 +42,8 @@ class JugarTorneoRequest extends FormRequest
             'jugadores' => [
                 new PotenciaDeDos($this->jugadores),
                 new JugadoresInvalidos($this->jugadores),
-                new ArrayValoresUnicos($this->jugadores)
+                new ArrayValoresUnicos($this->jugadores),
+                'Min:2'
             ],
             'genero' => 'in:M,F|required'
         ];
