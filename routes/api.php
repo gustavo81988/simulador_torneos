@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Torneos
 Route::get('torneo/listar','TorneosController@listarTorneos')->name('api.listar_torneos');
 Route::get('torneo/detalle','TorneosController@detalleTorneo')->name('api.detalle_torneo');
 Route::post('torneo/jugar','TorneosController@jugar')->name('api.torneo_masculino.index');
 
-
+//Jugadores
 Route::get('jugadores/listar','UsuarioController@listarJugadores')->name('api.usuario.listar');
