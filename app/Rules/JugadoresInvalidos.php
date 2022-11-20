@@ -4,19 +4,16 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class PotenciaDeDos implements Rule
+class JugadoresInvalidos implements Rule
 {
-
-    protected $arr;
-
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(array $arr)
+    public function __construct()
     {
-        $this->arr = $arr;
+        //
     }
 
     /**
@@ -28,8 +25,7 @@ class PotenciaDeDos implements Rule
      */
     public function passes($attribute, $value)
     {
-        $cantidad = count($this->arr);
-        return ($cantidad & ($cantidad - 1)) == 0 ? true : false;
+        //
     }
 
     /**
@@ -39,6 +35,6 @@ class PotenciaDeDos implements Rule
      */
     public function message()
     {
-        return 'La cantidad de :attribute debe ser potencia de 2';
+        return 'The validation error message.';
     }
 }
