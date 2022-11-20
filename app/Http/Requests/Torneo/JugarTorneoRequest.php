@@ -18,6 +18,16 @@ class JugarTorneoRequest extends FormRequest
         return true;
     }
 
+    public function messages()
+    {
+        return [
+            'genero.in'       => ':attribute debe ser M (Masculino) o F (Femenino).',
+            'genero.required' => 'El campo :attribute es obligatorio',
+            'nombre_torneo.required' => 'El campo :attribute es obligatorio',
+            'nombre_torneo.unique' => 'Ya existe un :attribute con ese valor.'
+        ];
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -26,10 +36,12 @@ class JugarTorneoRequest extends FormRequest
     public function rules()
     {
         return [
+            'nombre_torneo' => 'unique:App\Torneo,nombre|required',
             'jugadores' => [
                 new PotenciaDeDos($this->jugadores),
                 new ArrayValoresUnicos($this->jugadores)
             ],
+            'genero' => 'in:M,F|required'
         ];
     }
 }
