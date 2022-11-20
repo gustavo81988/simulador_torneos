@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Torneo;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\PotenciaDeDos;
 
 class JugarTorneoRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class JugarTorneoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'jugadores' => [new PotenciaDeDos($this->jugadores)],
         ];
     }
 }
