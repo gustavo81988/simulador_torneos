@@ -3,17 +3,19 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use App\Usuario;
 
 class JugadoresInvalidos implements Rule
 {
+    protected $jugadores;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(array $jugadores)
     {
-        //
+        $this->jugadores = $jugadores;
     }
 
     /**
@@ -25,7 +27,8 @@ class JugadoresInvalidos implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
+        $jugadores_bd = Usuario::whereIn('id',$this->jugadores)->count();
+        return $jugadores_bd != count($this->jugadores) ? false : true;
     }
 
     /**
@@ -35,6 +38,6 @@ class JugadoresInvalidos implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'La lista de :attribute contiene id\'s invalidos.';
     }
 }
