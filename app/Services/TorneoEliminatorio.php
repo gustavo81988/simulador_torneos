@@ -15,13 +15,14 @@ class TorneoEliminatorio
     protected function eliminatorias(
         array $jugadores,Partido $partido,Torneo $torneo,int $ronda = 1
     ):Jugador{
-        shuffle($jugadores);
+        shuffle($jugadores);//se generan encuentros aleatorios
         $encuentros = array_chunk($jugadores,2);
         $ganadores  = [];
         foreach($encuentros as $participantes){
             $ganadores[] = $partido->competir($participantes,$torneo,$ronda);
         }
         $ronda++;
+        //se aplica recursividad generando nuevas rondas hasta obtener el ganador
         return count($ganadores) != 2 ? 
             $this->eliminatorias($ganadores,$partido,$torneo,$ronda) :
             $partido->competir($ganadores,$torneo,$ronda);

@@ -26,6 +26,7 @@ class TorneosController extends Controller
             $jugadores = $usuario->jugadoresFemeninos($usuarios);
         }
 
+        $ganador = 
         return $torneo->obtenerGanador(
             $model_torneo,$jugadores,$partido
         )->nombreCompleto();
