@@ -26,10 +26,8 @@ class TorneosController extends Controller
             $jugadores = $usuario->jugadoresFemeninos($usuarios);
         }
 
-        $ganador = 
-        return $torneo->obtenerGanador(
-            $model_torneo,$jugadores,$partido
-        )->nombreCompleto();
+        $ganador = $torneo->obtenerGanador($model_torneo,$jugadores,$partido);
+        return  $ganador->nombreCompleto();
     }
 
     public function listarTorneos(ListarTorneosRequest $request,ModelTorneo $modelTorneo)
