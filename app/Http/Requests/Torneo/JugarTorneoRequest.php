@@ -40,7 +40,10 @@ class JugarTorneoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_torneo' => 'unique:App\Torneo,nombre|required',
+            'nombre_torneo' => [
+                'unique:App\Torneo,nombre',
+                'required'
+            ],
             'jugadores' => [
                 new PotenciaDeDos($this->jugadores),
                 new ArrayValoresUnicos($this->jugadores),
