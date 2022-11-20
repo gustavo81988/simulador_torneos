@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Usuario as ModelUsuario;
 use Carbon\Carbon;
 
 class UsuarioController extends Controller
 {
-    public function listarUsuarios(Request $request){
-        return response()->json($torneoModel->listarTorneos($request));
+    public function listarJugadores(Request $request,ModelUsuario $modelUsuario){
+        return response()->json($modelUsuario->listarJugadores($request));
     }
 }

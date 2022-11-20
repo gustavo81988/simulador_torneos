@@ -31,8 +31,21 @@ class Usuario extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function listarJudadores(){
-        
+    public function listarJudadores(\Illuminate\Http\Request $request): \Illuminate\Support\Collection{
+        $jugadores = Usuario::select(DB::raw('
+            id,
+            CONCAT(usuarios.nombre, " ",usuarios.apellido) as nombre_completo
+            (CASE usuarios.genero
+                WHEN "M" THEN "Masculino"
+                WHEN "F" THEN "Femenino"
+                ELSE "Sin Asignar"
+            END) as genero,
+            habilidad,
+            fuerza,
+            velocidad,
+            tiempo_reaccion,
+            DATE_FORMAT(usuarios.created_at,"%d/%m/%Y") as fecha_torneo
+        '))
     }
 
     public function jugadoresMasculinos($usuarios){

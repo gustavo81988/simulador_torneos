@@ -17,7 +17,7 @@ class CrearTablaUsuarios extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('sexo',1)->default('M');
+            $table->string('genero',1)->default('M');
             $table->integer('habilidad')->unsigned();
             $table->integer('fuerza')->nullable()->unsigned();
             $table->integer('velocidad')->nullable()->unsigned();
