@@ -71,7 +71,7 @@ class Usuario extends Authenticatable
     public function jugadoresFemeninos($usuarios){
         $jugadores = [];
         foreach($usuarios as $jugador){
-            $jugadores[] = new JugadorMasculino(
+            $jugadores[] = new JugadorFemenino(
                 $jugador['id'],
                 $jugador['nombre'],
                 $jugador['apellido'],
