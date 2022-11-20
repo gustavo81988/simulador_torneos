@@ -19,5 +19,4 @@ Route::get('torneo/detalle','TorneosController@detalleTorneo')->name('api.detall
 Route::post('torneo/jugar','TorneosController@jugar')->name('api.torneo_masculino.index');
 
 
-Route::post('jugadores/listar','UsuarioController@guardar')->name('api.usuario.guardar');
-// Route::post('usuario/guardar','UsuarioController@guardar')->name('api.usuario.guardar');
+Route::get('jugadores/listar','UsuarioController@listarJugadores')->name('api.usuario.listar');

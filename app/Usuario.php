@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Services\JugadorMasculino;
 use App\Services\JugadorFemenino;
 use App\Services\Habilidad;
+use DB;
 
 class Usuario extends Authenticatable
 {
@@ -31,10 +32,10 @@ class Usuario extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function listarJudadores(\Illuminate\Http\Request $request): \Illuminate\Support\Collection{
+    public function listarJugadores(\Illuminate\Http\Request $request): \Illuminate\Support\Collection{
         $jugadores = Usuario::select(DB::raw('
             id,
-            CONCAT(usuarios.nombre, " ",usuarios.apellido) as nombre_completo
+            CONCAT(usuarios.nombre, " ",usuarios.apellido) as nombre_completo,
             (CASE usuarios.genero
                 WHEN "M" THEN "Masculino"
                 WHEN "F" THEN "Femenino"
@@ -44,8 +45,12 @@ class Usuario extends Authenticatable
             fuerza,
             velocidad,
             tiempo_reaccion,
-            DATE_FORMAT(usuarios.created_at,"%d/%m/%Y") as fecha_torneo
-        '))
+            DATE_FORMAT(usuarios.created_at,"%d/%m/%Y") as fecha_creacion
+        '));
+
+        $request->genero ? $jugadores->where('usuarios.genero',$request->genero) : NULL;
+
+        return $jugadores->get();
     }
 
     public function jugadoresMasculinos($usuarios){
