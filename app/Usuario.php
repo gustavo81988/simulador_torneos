@@ -31,6 +31,10 @@ class Usuario extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function listarJudadores(){
+        
+    }
+
     public function jugadoresMasculinos($usuarios){
         $jugadores = [];
         foreach($usuarios as $jugador){

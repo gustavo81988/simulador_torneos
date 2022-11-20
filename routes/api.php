@@ -14,13 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('listar_torneos','TorneosController@listarTorneos')->name('api.listar_torneos');
-Route::get('detalle_torneo','TorneosController@detalleTorneo')->name('api.detalle_torneo');
-Route::post('torneo_masculino','TorneosController@torneoMasculino')->name('api.torneo_masculino.index');
+Route::get('torneo/listar','TorneosController@listarTorneos')->name('api.listar_torneos');
+Route::get('torneo/detalle','TorneosController@detalleTorneo')->name('api.detalle_torneo');
+Route::post('torneo/jugar','TorneosController@jugar')->name('api.torneo_masculino.index');
 
 
-Route::post('usuario/guardar','UsuarioController@guardar')->name('api.usuario.guardar');
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('jugadores/listar','UsuarioController@guardar')->name('api.usuario.guardar');
+// Route::post('usuario/guardar','UsuarioController@guardar')->name('api.usuario.guardar');

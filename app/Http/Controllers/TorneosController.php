@@ -6,15 +6,13 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Torneo as ModelTorneo;
 use App\Services\TorneoEliminatorio;
-use App\Services\JugadorMasculino;
 use App\Services\Partido;
-use App\Services\Habilidad;
 use App\Http\Requests\Torneo\ListarTorneosRequest;
 use App\Http\Requests\Torneo\DetalleTorneoRequest;
 
 class TorneosController extends Controller
 {
-    public function torneoMasculino(
+    public function jugar(
         Request $request,Usuario $usuario,Partido $partido,TorneoEliminatorio $torneo
     ){
         $usuarios     = Usuario::whereIn('id',$request->jugadores)->get();
