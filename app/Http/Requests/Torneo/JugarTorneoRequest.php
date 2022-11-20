@@ -22,11 +22,11 @@ class JugarTorneoRequest extends FormRequest
     public function messages()
     {
         return [
-            'jugadores.min' => 'Debe ingresar al menos 2 :attribute.',
+            'jugadores.min' => 'Debe ingresar al menos 4 :attribute.',
             'genero.in'       => ':attribute debe ser M (Masculino) o F (Femenino).',
             'genero.required' => 'El campo :attribute es obligatorio',
             'nombre_torneo.required' => 'El campo :attribute es obligatorio',
-            'nombre_torneo.unique' => 'Ya existe un :attribute con ese valor.'
+            'nombre_torneo.unique' => 'Ya existe un :attribute con ese nombre.'
         ];
     }
 
@@ -41,9 +41,9 @@ class JugarTorneoRequest extends FormRequest
             'nombre_torneo' => 'unique:App\Torneo,nombre|required',
             'jugadores' => [
                 new PotenciaDeDos($this->jugadores),
-                new JugadoresInvalidos($this->jugadores),
                 new ArrayValoresUnicos($this->jugadores),
-                'Min:2'
+                new JugadoresInvalidos($this->jugadores),
+                'Min:4'
             ],
             'genero' => 'in:M,F|required'
         ];
