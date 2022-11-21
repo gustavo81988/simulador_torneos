@@ -15,7 +15,11 @@ class CrearTablaTorneos extends Migration
     {
         Schema::create('torneos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario_ganador')->nullable()->index();
+            $table->foreignId('id_usuario_ganador')->nullable()->index()
+                ->constrained('usuarios')
+                ->onUpdate('cascade')
+                ->onDelete('restrict')
+            ;
             $table->string('nombre',100);
             $table->string('genero',1);
             $table->timestamps();
