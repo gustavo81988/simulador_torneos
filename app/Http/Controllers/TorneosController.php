@@ -27,7 +27,7 @@ class TorneosController extends Controller
         }
 
         $ganador = $torneo->obtenerGanador($model_torneo,$jugadores,$partido);
-        return  $ganador->nombreCompleto();
+        return  response()->json(['ganador' => $ganador->nombreCompleto()]);
     }
 
     public function listarTorneos(ListarTorneosRequest $request,ModelTorneo $modelTorneo)
