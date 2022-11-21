@@ -15,7 +15,12 @@ class CrearTablaPartidos extends Migration
     {
         Schema::create('partidos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_torneo')->index();
+            $table->foreignId('id_torneo')
+                ->constrained('torneos')
+                ->onUpdate('cascade')
+                ->onDelete('cascade')
+                ->index()
+            ;
             $table->foreignId('id_jugador_1')->index();
             $table->foreignId('id_jugador_2')->index();
             $table->integer('ronda')->unsigned();
