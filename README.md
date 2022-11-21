@@ -24,9 +24,5 @@ El sistema genera rondas eliminatorias en donde se comparan las habilidades de c
 - Ejecutar migraciones:   **php artisan migrate:fresh --seed**
 - En caso de usar el contenedor debe modificar la ruta raíz para que corresponda al lugar donde clono el proyecto dentro del archivo /docker/nginx/default y usar el comando **docker-compose Up —build -d** en la carpeta docker
 
-## Documentación del API
 
--  Swagger: https://app.swaggerhub.com/apis/GUSTAVO81988_1/TorneoTenis/1.0.0
-
--  En la raíz del proyecto se adjunta un importable de una colección POSTMAN
   
