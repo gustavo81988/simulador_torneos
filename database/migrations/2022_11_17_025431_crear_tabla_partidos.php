@@ -21,8 +21,16 @@ class CrearTablaPartidos extends Migration
                 ->onDelete('cascade')
                 ->index()
             ;
-            $table->foreignId('id_jugador_1')->index();
-            $table->foreignId('id_jugador_2')->index();
+            $table->foreignId('id_jugador_1')->index()
+                ->constrained('usuarios')
+                ->onUpdate('cascade')
+                ->onDelete('restrict')
+            ;
+            $table->foreignId('id_jugador_2')->index()
+                ->constrained('usuarios')
+                ->onUpdate('cascade')
+                ->onDelete('restrict')
+            ;
             $table->integer('ronda')->unsigned();
             $table->integer('puntuacion_jugador_1')->unsigned();
             $table->integer('puntuacion_jugador_2')->unsigned();
